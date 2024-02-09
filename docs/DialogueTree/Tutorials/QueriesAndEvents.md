@@ -14,7 +14,7 @@ This tutorial is also available in video format [**here**](https://youtu.be/ENdK
 ## Help & Support
 You can reach me for questions and support at unraedgames@gmail.com, or on the plugin's [**Discord Channel**](https://discord.gg/mf7mGXbePB). Feel free to reach out with any questions or requests. 
 
-If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the Unreal Marketplace. 
+If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
 If you would like to support further development on the project you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
 
@@ -258,7 +258,7 @@ In this tutorial we discussed:
 
 Future tutorials will cover how to customize the look and feel of dialogue in your project by extending the plugin.
 
-If you have any questions or feedback, I'd love to hear from you on my [**discord channel**](https://discord.gg/mf7mGXbePB). And if you're enjoying the plugin, I would be beyond grateful if you could take a few seconds out of your day to leave me a review on the [**Unreal Marketplace**](). 
+If you have any questions or feedback, I'd love to hear from you on my [**discord channel**](https://discord.gg/mf7mGXbePB). And if you're enjoying the plugin, I would be beyond grateful if you could take a few seconds out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
 Finally, if you want to support further development on the project, you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
 

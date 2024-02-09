@@ -13,7 +13,7 @@ This tutorial is also available in video format [**here**](https://youtu.be/5T6B
 ## Help & Support
 You can reach me for questions and support at unraedgames@gmail.com, or on the plugin's [**Discord Channel**](https://discord.gg/mf7mGXbePB). Feel free to reach out with any questions or requests. 
 
-If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the Unreal Marketplace. 
+If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
 If you would like to support further development on the project you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
 
@@ -162,7 +162,7 @@ This concludes the series of introductory tutorials I had planned to get people 
 3. [**The Queries and Events Tutorial**](QueriesAndEvents.md) focuses in on how you can create custom Queries and Events to have your dialogues interact with the rest of the game world.
 4. And finally, this tutorial explored some of the ways you can customize the plugin to fit your needs.
 
-You should now have a strong foundation for how to use Dialogue Tree in your own projects. I may add more tutorials in future as new features are added and as the need arises. Feel free to reach out if you have any questions, or requests for a specific feature or a tutorial on a specific topic. And if you're enjoying the plugin, I would be beyond grateful if you could take a few seconds out of your day to leave me a review on the [**Unreal Marketplace**](). 
+You should now have a strong foundation for how to use Dialogue Tree in your own projects. I may add more tutorials in future as new features are added and as the need arises. Feel free to reach out if you have any questions, or requests for a specific feature or a tutorial on a specific topic. And if you're enjoying the plugin, I would be beyond grateful if you could take a few seconds out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
 Finally, if you want to support further development on the project, you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
 
