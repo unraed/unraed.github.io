@@ -31,7 +31,7 @@ You can reach me for questions and support at unraedgames@gmail.com, or on the p
 
 If you're enjoying the plugin, please take a few moments out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
-If you would like to support further development on the project you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
+If you would like to support further development on the project you can do so on [**Patreon.com**](https://www.patreon.com/UnraedGames). 
 
 ## State of the Plugin 
 The plugin is currently in a stable and useable state, with some quality of life features in development. Below you will find a more detailed look at the plugin in its current state, but here are some highlights of the major features:

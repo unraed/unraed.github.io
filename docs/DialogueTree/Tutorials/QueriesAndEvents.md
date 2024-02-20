@@ -16,7 +16,7 @@ You can reach me for questions and support at unraedgames@gmail.com, or on the p
 
 If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
-If you would like to support further development on the project you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
+If you would like to support further development on the project you can do so on [**Patreon.com**](https://www.patreon.com/UnraedGames). 
 
 ## Contents
 1. [**Introduction**](QueriesAndEvents.md#introduction)
@@ -260,7 +260,7 @@ Future tutorials will cover how to customize the look and feel of dialogue in yo
 
 If you have any questions or feedback, I'd love to hear from you on my [**discord channel**](https://discord.gg/mf7mGXbePB). And if you're enjoying the plugin, I would be beyond grateful if you could take a few seconds out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
-Finally, if you want to support further development on the project, you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
+Finally, if you want to support further development on the project, you can do so on [**Patreon.com**](https://www.patreon.com/UnraedGames). 
 
 In the meantime, thanks for reading this tutorial. Best of luck and happy developing.
 

@@ -33,6 +33,9 @@ dialogue itself. Think of this as the primary interface between the player and d
    * [**Handle Missing Speaker**](DialogueController.md#handle-missing-speaker-blueprintimplementable)
 3. [**Data Attributes**](DialogueController.md#3-data-attributes)
    * [**Current Dialogue**](DialogueController.md#current-dialogue-blueprintreadonly)
+   * [**Widget ZOrder**](DialogueController.md#widget-zorder)
+   * [**Allow Game Input In Dialogue**](DialogueController.md#allow-game-input-in-dialogue)
+   * [**Default Input Mode**](DialogueController.md#default-input-mode)
 
 ## 1. Blueprint Callable Methods
 The following methods can be called but not overridden via blueprint. 
@@ -251,3 +254,23 @@ The following are the data attributes associated with the class.
 * **Type:** UDialogue* 
 * **Access:** Protected
 * **Description:** The dialogue currently being played. 
+
+### Widget ZOrder
+* **Type:** int32
+* **Access:** Public
+* **Description:** The target ZOrder to spawn the dialogue widget at in the viewport. This should be above any widgets which might potentially block input from the dialogue widget.
+
+### Allow Game Input in Dialogue 
+* **Type:** bool
+* **Access:** Public
+* **Description:** Toggles whether normal game input is allowed while the dialogue is open. If set to false, normal game input is suppressed. If set to true, normal game input is allowed in parallel with UI. Under the hood this is just determining which input mode is used. 
+
+### Default Input Mode
+* **Type:** F_DLGCachedInputMode
+* **Access:** Public
+* **Description:** Struct used to determine input mode parameters for when the dialogue ends. Unfortunately the engine doesn't seem to have a means of retrieving these values; setting them here allows the user to fully customize what input mode the game reverts to when the dialogue closes. Members include:
+    * **Cached Mode:** Enum value to set the desired mode. Can be Game Only (Default), Game and UI, or UI Only. 
+    * **Flush Input:** Bool. Whether the input buffer should be flushed on exiting dialogue. This should only matter if game input is allowed, and rarely even then. 
+    * **Hide Cursor During Capture:** Bool. Whether the cursor should be hidden during capture. Applied only if Cached Mode is set to Game and UI. 
+    * **Mouse Lock Mode:** Enum value mirroring EMouseLockMode. EMouseLockMode appears hidden from Blueprints, making this workaround necessary even though it's somewhat ugly. This value allows you to determine the mouse lock behavior, if any on exiting dialogue. Not applied if Cached MOde is set to Game Only. 
+

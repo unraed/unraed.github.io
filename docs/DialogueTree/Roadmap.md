@@ -15,7 +15,7 @@ You can reach me for questions and support at unraedgames@gmail.com, or on the p
 
 If you're enjoying the plugin, I would be extremely grateful if you could take a few moments out of your day to leave me a review on the [**Unreal Marketplace**](https://www.unrealengine.com/marketplace/en-US/product/dialogue-tree). 
 
-If you would like to support further development on the project you can do so on [**Patreon.com**](patreon.com/UnraedGames). 
+If you would like to support further development on the project you can do so on [**Patreon.com**](https://www.patreon.com/UnraedGames). 
 
 ## High Priority 
 - Auto-arrange feature (Quality of Life)
