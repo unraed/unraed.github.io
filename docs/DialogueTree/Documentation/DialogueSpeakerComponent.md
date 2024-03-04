@@ -23,6 +23,8 @@ A component representing a “Speaker” or participant in a dialogue. Serves as
    * [**Start Owned Dialogue**](DialogueSpeakerComponent.md#start-owned-dialogue-blueprintcallable)
    * [**Start Dialogue With Names**](DialogueSpeakerComponent.md#start-dialogue-with-names-blueprintcallable)
    * [**Start Dialogue**](DialogueSpeakerComponent.md#start-dialogue-blueprintcallable)
+   * [**End Current Dialogue**](DialogueSpeakerComponent.md#end-current-dialogue-blueprintcallable)
+   * [**Try Skip Speech**](DialogueSpeakerComponent.md#try-skip-speech-blueprintcallable)
 2. [**Blueprint Implementable Methods**](DialogueSpeakerComponent.md#2-blueprint-implementable-methods)
    * [**Get Dialogue Controller**](DialogueSpeakerComponent.md#get-dialogue-controller-blueprintimplementableevent)
 3. [**Data Attributes**](DialogueSpeakerComponent.md#3-data-attributes)
@@ -171,6 +173,25 @@ void StartDialogueWithNames(UDialogue* InDialogue, TMap<FName, UDialogueSpeakerC
 void StartDialogue(UDialogue* InDialogue, TArray<UDialogueSpeakerComponent*> InSpeakers);
 ```
 <br>
+
+### End Current Dialogue (BlueprintCallable)
+```cpp
+/**
+* Ends the dialogue the speaker is currently participating in, if applicable. Does nothing 
+* if the speaker is not engaged in dialogue. 
+*/
+void EndCurrentDialogue();
+```
+<br>
+
+### Try Skip Speech (BlueprintCallable)
+```cpp
+/**
+* Attempts to skip the current speech that is playing. Does nothing if the 
+* speaker component is not engaged in dialogue. 
+*/
+void TrySkipSpeech();
+```
 
 ## 2. Blueprint Implementable Methods 
 The following methods are intended to be implemented by the user in blueprint when creating a custom speaker component.

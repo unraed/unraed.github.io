@@ -8,8 +8,14 @@ permalink: /DialogueTree/Documentation/DialogueController
 # Dialogue Tree: Dialogue Controller 
 **Extends: [AActor](https://docs.unrealengine.com/5.2/en-US/API/Runtime/Engine/GameFramework/AActor/)**
 
-Actor that serves as a controller linking the various axes of dialogue behavior: user input, dialogue widgets (or other display schemes), and the 
+Actor that serves as a controller linking the various aspects of dialogue behavior: user input, dialogue widgets (or other display schemes), and the 
 dialogue itself. Think of this as the primary interface between the player and dialogue. 
+
+Some important considerations: 
+- The controller is not placeable. Instead, a single controller will be automatically spawned in to follow the lifespan of your World. 
+- Because the controller manages the "memory" of which nodes have been visited, those records also follow the lifespan of your world. 
+- Custom controllers can be implemented by the user to achieve very different behavior in dialogue. To replace the default BP_BasicDialogueController with a custom implementation, set the DialogueControllerType in ProjectSettings>>Dialogue Tree. See [**Plugin Settings**](PluginSettings.md).
+- The default controller has a number of configurable settings that can be set in ProjectSettings>>Dialogue Tree. 
 
 ## Contents
 1. [**Blueprint Callable Methods**](DialogueController.md#1-blueprint-callable-methods)
@@ -33,9 +39,9 @@ dialogue itself. Think of this as the primary interface between the player and d
    * [**Handle Missing Speaker**](DialogueController.md#handle-missing-speaker-blueprintimplementable)
 3. [**Data Attributes**](DialogueController.md#3-data-attributes)
    * [**Current Dialogue**](DialogueController.md#current-dialogue-blueprintreadonly)
-   * [**Widget ZOrder**](DialogueController.md#widget-zorder)
-   * [**Allow Game Input In Dialogue**](DialogueController.md#allow-game-input-in-dialogue)
-   * [**Default Input Mode**](DialogueController.md#default-input-mode)
+   * [**Controller Delegates**](DialogueController.md#controller-delegates-blueprintassignable)
+4. [**Configurable Settings**](DialogueController.md#4-configurable-settings)
+
 
 ## 1. Blueprint Callable Methods
 The following methods can be called but not overridden via blueprint. 
@@ -156,8 +162,7 @@ FDialogueRecords GetDialogueRecords() const;
 ### Clear Dialogue Records (BlueprintCallable)
 ```cpp
 /**
-* Clears node visitation info from all dialogues in the game. Might be 
-* useful when saving and loading. I used it for testing. 
+* Clears node visitation info for all dialogues in the game. 
 */
 void ClearDialogueRecords();
 ```
@@ -167,7 +172,7 @@ void ClearDialogueRecords();
 ```cpp
 /**
 * Imports a dialogue records struct, adding any recorded visits to the 
-* appropriate dialogues. 
+* appropriate dialogue's record. 
 * 
 * @param InRecords - const FDialogueRecords&, the records to load. 
 */
@@ -255,22 +260,16 @@ The following are the data attributes associated with the class.
 * **Access:** Protected
 * **Description:** The dialogue currently being played. 
 
-### Widget ZOrder
-* **Type:** int32
-* **Access:** Public
-* **Description:** The target ZOrder to spawn the dialogue widget at in the viewport. This should be above any widgets which might potentially block input from the dialogue widget.
+### Controller Delegates (BlueprintAssignable)
+The following are delegates that can be used to assign additional functionality to various phases in dialogue. These are included to provide another avenue for customizing/integrating dialogue into the world of your project. The delegates consist of:
+   * **OnDialogueStarted:** called when the dialogue starts playing. 
+   * **OnDialogueEnded:** called with the dialogue concludes.
+   * **OnDialogueSpeechDisplayed:** takes an FSpeechDetails struct; called when a new speech plays. 
 
-### Allow Game Input in Dialogue 
-* **Type:** bool
-* **Access:** Public
-* **Description:** Toggles whether normal game input is allowed while the dialogue is open. If set to false, normal game input is suppressed. If set to true, normal game input is allowed in parallel with UI. Under the hood this is just determining which input mode is used. 
-
-### Default Input Mode
-* **Type:** F_DLGCachedInputMode
-* **Access:** Public
-* **Description:** Struct used to determine input mode parameters for when the dialogue ends. Unfortunately the engine doesn't seem to have a means of retrieving these values; setting them here allows the user to fully customize what input mode the game reverts to when the dialogue closes. Members include:
-    * **Cached Mode:** Enum value to set the desired mode. Can be Game Only (Default), Game and UI, or UI Only. 
-    * **Flush Input:** Bool. Whether the input buffer should be flushed on exiting dialogue. This should only matter if game input is allowed, and rarely even then. 
-    * **Hide Cursor During Capture:** Bool. Whether the cursor should be hidden during capture. Applied only if Cached Mode is set to Game and UI. 
-    * **Mouse Lock Mode:** Enum value mirroring EMouseLockMode. EMouseLockMode appears hidden from Blueprints, making this workaround necessary even though it's somewhat ugly. This value allows you to determine the mouse lock behavior, if any on exiting dialogue. Not applied if Cached MOde is set to Game Only. 
-
+## 4. Configurable Settings
+There are several settings that can be used to configure the behavior of the default BP_BasicDialogueController. These settings, as well as the controller type to use, can be set from ProjectSettings>>DialogueTree. For full details, please see the [**plugin settings**](PluginSettings.md) documentation. Settings include: 
+   * **DialogueControllerType:** the type of controller to use if overriding the default. 
+   * **Widget Type:** the type of display widget the default controller will use. 
+   * **Widget ZOrder:** the ZOrder for the default controller to spawn the display widget into the viewport.
+   * **Default Input Mode:** the input mode values to revert to when exiting dialogue. 
+   * **Allow Game Input in Dialogue:** whether Game Input should be allowed when navigating dialogue. 

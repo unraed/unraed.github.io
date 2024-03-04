@@ -32,6 +32,7 @@ Node that plays a speech. The workhorse of any dialogue.
   * **bIgnoreContent:** Whether the speech's text and audio content should be force skipped/ignored. Primarily useful for "continue" buttons and similar speech options we do not want to actually play. False by default.
   * **Speech Text:** The textual content of the speech.
   * **Speech Audio:** The audio content of the speech.
+  * **Minimum Play Time:** The minimum amount of time for the speech to display for if not skipped. 0.0f by default. 
   * **bCanSkip:** Whether the player is allowed to skip this speech. True by default.
   * **BehaviorFlags:** Custom data tags associated with the speech. Can be used to help trigger animations, or in any other case where additional information about a speech is necessary. Structured as an FGameplayTagContainer. 
   * **TransitionType:** The type of [**transition**](SpeechTransitions.md#speech-transitions) the the speech uses. Auto-transitions play all node content and then proceed immediately to the next node in the chain. Input transitions present a list of options from among the node's children and wait for the player to select one before continuing.

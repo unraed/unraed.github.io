@@ -16,6 +16,9 @@ Dialogue Queries are used to retrieve information for use in dialogue. Generally
    * [**Query Speaker**](DialogueQuery.md#query-speaker-blueprintimplementableevent)
    * [**Is Valid Speaker Query**](DialogueQuery.md#is-valid-speaker-query-blueprintnativeevent)
    * [**Get Graph Description**](DialogueQuery.md#get-graph-description-blueprintnativeevent)
+3. [**Helper Functions**](DialogueQuery.md#helper-functions)
+   * [**Get Speaker Socket**](DialogueQuery.md#get-speaker-socket-blueprintcallable)
+   * [**Get Additional Speaker Sockets**](DialogueQuery.md#get-additional-speaker-sockets-blueprintcallable)
 
 ## 1. Built in Queries 
 Two queries are provided pre-made. These are: 
@@ -49,10 +52,11 @@ Provides the actual logic of querying the speaker. Must be overridden to create 
 /**
 * User specified query. Implemented via blueprint.
 *
-* @param InSpeaker - UDialogueSpeakerComponent*, target speaker.
+* @param InSpeaker - FSpeakerActor, struct containing target speaker component and actor
+* @param OtherSpeakers - TArray<FSpeakerActor>, any additional speakers
 * @return bool - the value of the query.
 */
-bool QuerySpeaker(const UDialogueSpeakerComponent* InSpeaker) const;
+bool QuerySpeaker(FSpeakerActorEntry InSpeaker, const TArray<FSpeakerActorEntry>& OtherSpeakers) const;
 ```
 <br>
 
@@ -61,10 +65,11 @@ bool QuerySpeaker(const UDialogueSpeakerComponent* InSpeaker) const;
 /**
 * User specified query. Implemented via blueprint. 
 * 
-* @param InSpeaker - UDialogueSpeakerComponent*, target speaker.
+* @param InSpeaker - FSpeakerActor, struct containing target speaker component and actor
+* @param OtherSpeakers - TArray<FSpeakerActor>, any additional speakers
 * @return int32 - the value of the query. 
 */
-int32 QuerySpeaker(const UDialogueSpeakerComponent* InSpeaker) const;
+int32 QuerySpeaker(FSpeakerActorEntry InSpeaker, const TArray<FSpeakerActorEntry>& OtherSpeakers) const;
 ```
 <br>
 
@@ -73,14 +78,15 @@ int32 QuerySpeaker(const UDialogueSpeakerComponent* InSpeaker) const;
 /**
 * User specified query. Implemented via blueprint.
 *
-* @param InSpeaker - UDialogueSpeakerComponent*, target speaker.
+* @param InSpeaker - FSpeakerActor, struct containing target speaker component and actor
+* @param OtherSpeakers - TArray<FSpeakerActor>, any additional speakers
 * @return double - the value of the query.
 */
-double QuerySpeaker(const UDialogueSpeakerComponent* InSpeaker) const;
+double QuerySpeaker(FSpeakerActorEntry InSpeaker, const TArray<FSpeakerActorEntry>& OtherSpeakers) const;
 ```
 <br>
 
-### Is Valid Speaker Query (BlueprintNativeEvent)
+#### Is Valid Speaker Query (BlueprintNativeEvent)
 Can be overridden to specify conditions the Query needs to satisfy in order to compile. Useful when using variables that can have a null value; allows you to require these to be filled in order to compile the dialogue. Simply returns true if not overridden.
 
 ```cpp
@@ -105,3 +111,33 @@ Retrieves the display text for the query in the dialogue editor. Failing to over
 FText GetGraphDescription() const;
 ```
 
+### Helper Functions 
+The following functions are useful helpers when working with queries.
+
+#### Get Speaker Socket (BlueprintCallable)
+Retrieves the primary target speaker socket for the query.
+
+```cpp
+/**
+* Fetches the dialogue query's speaker socket.
+*
+* @return UDialogueSpeakerSocket* - the socket.
+*/
+UDialogueSpeakerSocket* GetSpeakerSocket() const;
+```
+<br>
+
+#### Get Additional Speaker Sockets (BlueprintCallable)
+
+Retrieves any additional target speakers supplied for the query. 
+
+```cpp
+/**
+* Retrieves the list of optional additional speaker sockets for the query.
+*
+* @return TArray<UDialogueSpeakerSocket*> - the list of optional additional
+* speakers.
+*/
+TArray<UDialogueSpeakerSocket*> GetAdditionalSpeakerSockets() const;
+```
+<br>

@@ -25,6 +25,7 @@ If you would like to support further development on the project you can do so on
 6. [**Dialogue Speaker Socket**](DialogueSpeakerSocket.md)
 7. [**FOnBehaviorFlagsChanged**](FOnBehaviorFlagsChanged.md)
 8. [**FSpeechDetails**](FSpeechDetails.md) 
+9. [**Plugin Settings**](PluginSettings.md)
 
 ### Dialogue Editor 
 1. [**Dialogue Condition**](DialogueCondition.md)

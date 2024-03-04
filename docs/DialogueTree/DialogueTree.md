@@ -88,7 +88,7 @@ I would love to hear what you think. Does something work particularly well or po
 These are the same statistics about the plugin's contents that Epic asks to list on their store page: 
 
 - Number of Blueprints: 10
-- Number of C++ Classes: 67
+- Number of C++ Classes: 69
 - Supported Development Platforms: Win64
 - Supported Target Build Environments: Win64
 (Support for further platforms will be considered in future if there is sufficient interest)

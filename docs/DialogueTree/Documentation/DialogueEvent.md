@@ -20,6 +20,9 @@ Dialogue events can be used to trigger an effect from dialogue on the wider worl
    * [**On Play Event**](DialogueEvent.md#on-play-event-blueprintnativeevent)
    * [**Is Valid Event**](DialogueEvent.md#is-valid-event-blueprintnativeevent)
    * [**Get Graph Description**](DialogueEvent.md#get-graph-description-blueprintnativeevent)
+5. [**Helper Functions**](DialogueEvent.md#helper-functions)
+   * [**Get Speaker Socket**](DialogueEvent.md#get-speaker-socket-blueprintcallable)
+   * [**Get Additional Speaker Sockets**](DialogueEvent.md#get-additional-speaker-sockets-blueprintcallable)
   
 ## 1. Built in Events
 Three Events are included with the plugin. These are:
@@ -62,10 +65,11 @@ Contains the actual logic of your event. Override this method to specify the eve
 /**
 * User specified behavior for the event.
 * 
-* @param InSpeaker - UDialogueSpeakerComponent*, speaker 
+* @param InSpeaker - FSpeakerActor, struct containing target speaker component and actor
+* @param OtherSpeakers - TArray<FSpeakerActor>, any additional speakers
 * component to operate on. 
 */
-void OnPlayEvent(UDialogueSpeakerComponent* InSpeaker);
+void OnPlayEvent(FSpeakerActorEntry InSpeaker, const TArray<FSpeakerActorEntry>& OtherSpeakers);
 ```
 <br>
 
@@ -95,3 +99,33 @@ Gets the text to display in the dialogue editor for this event. If you do not ov
 FText GetGraphDescription() const;
 ```
 
+### Helper Functions 
+The following functions are useful helpers when working with events.
+
+#### Get Speaker Socket (BlueprintCallable)
+Retrieves the primary target speaker socket for the event.
+
+```cpp
+/**
+* Fetches the dialogue event's speaker socket.
+*
+* @return UDialogueSpeakerSocket* - the socket.
+*/
+UDialogueSpeakerSocket* GetSpeakerSocket() const;
+```
+<br>
+
+#### Get Additional Speaker Sockets (BlueprintCallable)
+
+Retrieves any additional target speakers supplied for the event. 
+
+```cpp
+/**
+* Retrieves the list of optional additional speaker sockets for the event.
+*
+* @return TArray<UDialogueSpeakerSocket*> - the list of optional additional
+* speakers.
+*/
+TArray<UDialogueSpeakerSocket*> GetAdditionalSpeakerSockets() const;
+```
+<br>
