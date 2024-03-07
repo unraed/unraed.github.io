@@ -120,7 +120,9 @@ void EndDialogue();
 */
 void Skip() const;
 ```
-<br>
+
+**Note:** A common issue encountered here occurs when game input is set to not be allowed in the project settings. This blocks all input, which prevents Skip() getting called. You can bypass this restriction in one of two ways. Either allow game input while in dialogue, or implement an override of OnKeyDown() or OnMouseDown() in a custom Dialogue Widget. 
+
 
 ### Clear Node Visits (BlueprintCallable)
 ```cpp
@@ -272,4 +274,4 @@ There are several settings that can be used to configure the behavior of the def
    * **Widget Type:** the type of display widget the default controller will use. 
    * **Widget ZOrder:** the ZOrder for the default controller to spawn the display widget into the viewport.
    * **Default Input Mode:** the input mode values to revert to when exiting dialogue. 
-   * **Allow Game Input in Dialogue:** whether Game Input should be allowed when navigating dialogue. 
+   * **Allow Game Input in Dialogue:** whether Game Input should be allowed when navigating dialogue. Please note that setting this option to false, will block ALL normal game input. As such, any key presses used in the UI will also need alternative routing. See notes on the Skip() function above. 

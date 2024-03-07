@@ -192,6 +192,9 @@ void EndCurrentDialogue();
 */
 void TrySkipSpeech();
 ```
+**Note:** A common issue encountered here occurs when game input is set to not be allowed in the project settings. This blocks all input, which prevents TrySkipSpeech() getting called. You can bypass this restriction in one of two ways. Either allow game input while in dialogue, or implement an override of OnKeyDown() or OnMouseDown() in a custom Dialogue Widget. 
+
+<br>
 
 ## 2. Blueprint Implementable Methods 
 The following methods are intended to be implemented by the user in blueprint when creating a custom speaker component.

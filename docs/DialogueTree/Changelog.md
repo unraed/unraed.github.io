@@ -53,3 +53,10 @@ Below you will find a brief summary of changes made to the plugin.
 - Removed the awkward "paste" option from the graph context menu. Pasting nodes is still possible using standard hotkeys.
 - Made the "memory" of which dialogue nodes had been visited follow the lifespan of the World rather than the Game Instance as had been the case previously.  
 - Added a number of new error/warning messages to the output log to help troubleshoot potential issues. 
+
+## 3/7/2024 - v1.1.1
+- Added additional measures to ensure Dialogue Controller would not be unloaded spatially when using Open World projects
+- Fixed a bug that caused certain settings not to load if Widget Type had not been explicitly set in project settings
+- Made the default setting for the dialogue controller be to allow game input in dialogue 
+- Fixed an issue with the various skip() functions that prevented them from operating:
+    * Please note that, if you set the controller to not allow game input while in dialogue, you will need an alternative way to call skip(). Please see the documentation for the [**Dialogue Controller**](Documentation/DialogueController.md) for more information.
