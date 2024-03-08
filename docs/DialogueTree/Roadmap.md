@@ -36,13 +36,14 @@ If you would like to support further development on the project you can do so on
 - A new transition type for speech nodes that automatically transitions to one of the node's children at random (New functionality) [Note](Roadmap.md#note-random-child-speech-transition)
 - A new transition type for speech nodes that, each time it is visited, plays each of the node's children in sequence (New functionality) [Note](Roadmap.md#note-sequential-child-speech-transition)
 - A built in solution for hooking dialogue into sequences/cutscenes (New functionality)
-- Potentially move node visitation data from the dialogues themselves into the controller? (technical improvement)
+- CSV/Data table import/export option for dialogues?
 
 ## Completed 
 - Configurable duration for speech nodes that do not have audio
 - Switched Behavior Flags from a Set to a GameplayTagContainer for a much more flexible approach. 
 - Changed the way variables are pulled from Queries and Events to create fields in the Graph's details panel. This removes the restriction around the types of variables that can be filled from the editor and simplifies the creation of custom graph descriptions.
 - Fixed a benign but annoying issue where the events Reset Node Visits and Reset All Node Visits required a Speaker to be selected in the graph despite having nothing to do with speakers.
+- Moved the node visitation memory of dialogue from following the game instance's lifespan to that of the world. 
 
 ## Planned Tutorials
 - Bring core tutorials up to date with v1.1 changes
