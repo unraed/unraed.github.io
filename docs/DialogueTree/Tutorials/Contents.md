@@ -14,3 +14,7 @@ The following tutorials cover the basics of using Dialogue Tree. Video versions 
 2. [**Editor Guide**](EditorGuide.md)
 3. [**Queries and Events**](QueriesAndEvents.md)
 4. [**Customization**](Customization.md)
+
+## Feature Updates
+The following tutorials cover new features that have been added to the plugin over time. 
+1. [**Minimum Play Time**](MinimumPlayTime.md)
