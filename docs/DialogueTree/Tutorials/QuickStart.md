@@ -20,7 +20,7 @@ If you would like to support further development on the project you can do so on
 ## Contents
 1. [**Introduction**](QuickStart.md#introduction)
 2. [**Key Concepts**](QuickStart.md#key-concepts-and-roadmap)
-3. [**Adding the Dialogue Controller**](QuickStart.md#adding-the-dialogue-controller)
+3. [**The Dialogue Controller**](QuickStart.md#the-dialogue-controller)
 4. [**Creating a Dialogue**](QuickStart.md#creating-a-dialogue)
 5. [**Adding the Player Speaker Component**](QuickStart.md#adding-the-player-speaker-component)
 6. [**Creating an NPC**](QuickStart.md#creating-an-npc)
@@ -50,20 +50,21 @@ The first one is the Dialogue Controller. You can think of this as the conductor
 
 The second key object is the dialogue asset. This is where you get to write the content of the dialogue itself: who says what and when. 
 
-Finally, we have the Speaker Component, which attaches to your characters and lets them interact 
-with your dialogues. 
+Finally, we have the Speaker Component, which attaches to your characters and lets them interact with your dialogues. 
 
-We'll start by adding a Dialogue Controller to our level, then we'll create a Dialogue, and finally we'll set up our Player and an NPC to get them talking to each other. 
+We'll start by creating a Dialogue, then we'll set up our Player and an NPC, and finally we'll implement some logic in blueprint to get them talking to each other. 
 
-## Adding the Dialogue Controller
-The first thing we want to do is add a Dialogue Controller to our level. As mentioned, this actor governs the user-interface for our dialogue.  
+## The Dialogue Controller
+Before we get started I want to address a small change to the Dialogue Controller that was made in the plugin's Version 1.1 update. As mentioned previously, the Dialogue Controller is an actor that governs the user-interface for your dialogues. 
 
-You can find the default Controller in the plugin's Content folder under Blueprints>>Controllers. While a whole lot of customization is possible here, for the purposes of this tutorial, we're going to keep everything in its default state. Which means all we need to do here is drag our Controller into the level. 
+Before the update, you had to manually drag your Dialogue Controller into the level. After the update this step can be skipped, as the system now automatically spawns in and manages a Dialogue Controller for you. 
+
+If you want to use a custom Dialogue Controller or configure the settings on the default controller you can now do so in Project Settings under Dialogue Tree. I'll go into this more in the updated Customization tutorial, but I wanted to give the change a brief mention here. 
 
 ![QS_Controller](Images/QS_Controller.png)
 
 ## Creating a Dialogue
-Next up we want to create a Dialogue Tree asset. This is where we will define the actual content of a conversation.
+With that out of the way, we want to start by creating a Dialogue Tree asset. This is where we will define the actual content of a conversation.
 
 Right click in the content browser and select “Dialogue Tree.” I’ll name mine, “DLG_" for Dialogue, and then "TestDialogue.”
 
@@ -160,7 +161,7 @@ All that’s left is to test it. Press play and approach the NPC cube. The dialo
 ## Summary
 And that’s all there is to it. To sum up, in this tutorial we covered:
 
-1. How to add a dialogue controller to the level
+1. How Dialogue Controllers relate to our project
 2. How to create a simple Dialogue Tree asset
 3. How to set up Speaker Components
 4. And how to get the dialogue to play

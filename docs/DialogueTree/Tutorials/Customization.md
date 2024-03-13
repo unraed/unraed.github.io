@@ -22,6 +22,8 @@ If you would like to support further development on the project you can do so on
 2. [**Customization Overview**](Customization.md#customization-overview)
 3. [**Modifying and Replacing Display Widgets**](Customization.md#modifying-and-replacing-display-widgets)
 4. [**Customizing the Dialogue Controller**](Customization.md#customizing-the-dialogue-controller)
+5. [**How the Default Dialogue Controller Works**](Customization.md#how-the-default-dialogue-controller-works)
+6. [**What Kind of Controller Customizations Can You Do?**](Customization.md#what-kind-of-controller-customizations-can-you-do)
 5. [**Extending the Speaker Component**](Customization.md#extending-the-speaker-component)
 5. [**Summary**](Customization.md#summary)
 
@@ -56,13 +58,17 @@ The other provided Display Widget is W_CRPGDialogueDisplay. As the name implies,
 
 ![C_CRPGDisplayExample02](Images/C_CRPGDisplayExample02.png)
 
-The display widget you use can be set from the Dialogue Controller's details panel. 
+If you are using the default BP_BasicDialogueController, you can override its display widget from Project Settings>>Dialogue Tree by changing the value of Widget Type.  
 
-![C_SetWidgetType01](Images/C_SetWidgetType01.png)
+![C_SetWidgetType01](Images/C_SetWidgetTypeInSettings.png)
 
-![C_SetWidgetType02](Images/C_SetWidgetType02.png)
+To tweak an existing Display Widget, you just need a basic knowledge of UMG. Create a new widget extending either W_BasicDialogueDisplay or W_CRPGDialogueDisplay. 
 
-To tweak an existing Display Widget, you just need a basic knowledge of UMG. The provided widgets can be found in the plugin’s content folder under DisplayWidgets and then the Basic and CRPG folders respectively. Opening the widgets up in UMG will allow you to tweak their visuals to your liking.
+![C_ExtendingDisplayWidget01](Images/C_ExtendingDisplayWidget01.png)
+
+![C_ExtendingDisplayWidget02](Images/C_ExtendingDisplayWidget02.png)
+
+Opening the new widgets up in UMG will allow you to tweak their visuals to your liking.
 
 ![C_TweakingDisplay](Images/C_TweakingDisplay.png)
 
@@ -96,8 +102,59 @@ And On Close allows you to specify behavior to play on closing the widget.
 
 ![C_OnCloseWidget](Images/C_OnCloseWidget.png)
 
+## Default Dialogue Controller Settings
+Even if you decide to stick with the default Dialogue Controller, it’s inevitable that you’ll want to tweak it to better fit your needs. 
+
+As of update 1.1, there are now several configuration options for the default controller available under Project Settings>>Dialogue Tree. 
+
+![C_ConfigureDefaultController](Images/C_ConfigureDefaultController.png)
+
+The "Widget Type" property, as we have already discussed, allows you to change the display widget that the default Controller will use. 
+
+"Widget ZOrder" allows you to change the ZOrder that the Controller will be spawned into in the player's viewport. If you are having an issue where the display widget appears but cannot be clicked on, it is usually because there is a "hit-testable" canvas panel in your project that is physically blocking the input. In such cases, increasing the "Widget ZOrder" value can help solve the issue. 
+
+The "Default Input Mode" is a struct that allows you to configure the input mode settings the default Dialogue Controller will use on exiting dialogue. 
+
+- "Input Mode" defines the overall input mode that will be used. This can be "Game Only," "Game and UI," or "UI Only." 
+- "Flush Input" allows you to set whether existing input will be cleared on exiting dialogue. 
+- "Hide Cursor During Capture," as the name suggests, determines whether the cursor should be hidden during capture. This is only used for "Game and UI" mode. 
+- "Mouse Lock Mode" determines if/how the mouse should be locked to the screen. This is not used for "Game Only" mode. 
+
+Finally, we have "Allow Game Input in Dialogue." This allows you to determine whether normal game input will be allowed while navigating dialogue. In effect, setting this to true means the default Dialogue Controller will set the input mode to "Game and UI" on entering dialogue. Setting it to false means the default Dialogue Controller will set the input mode to "UI Only" on entering dialogue. 
+
+Please note that all non-UI game input, including key presses, is blocked in UI Only mode. As a result, if you want to include hotkeys, a skip button or something similar in your dialogues while "Allow Game Input In Dialogue" is set to true, you will need to set this up via UI inputs. This can be accomplished, for example, by creating a custom display widget and overriding OnMouseButtonDown().
+
+![C_ExampleMouseDownFunction](Images/C_ExampleMouseDownFunction.png)
+
+To access the default Controller settings in your custom dialogue controllers you can call GetDialogueManagerSubsytem() followed by GetSettings().
+
+![C_AccessDefaultControllerSettings](Images/C_AccessDefaultControllerSettings.png)
+
 ## Customizing the Dialogue Controller
-Even if you decide to stick with the default Dialogue Controller, it’s inevitable that you’ll want to tweak it to better fit your needs. So, let’s take a little tour around the controller and how it can be modified.
+
+If you want to customize the behavior of the default controller, you can do so by extending BP_BasicDialogueController in blueprint. 
+
+![C_ExtendDefaultController](Images/C_ExtendDefaultController.png)
+
+As you can see, this allows us to override the individual functions that make up the controller's behavior with new logic. 
+
+![C_ExtendControllerFunctionOverrides](Images/C_ExtendControllerFunctionOverrides.png)
+
+And, if we want to call the default version of the function as part of our custom implementation, all we have to do is right click on the event and select "Add Call to Parent Function."
+
+![C_AddParentFunctionCall](Images/C_AddParentFunctionCall.png)
+
+Another way to add new behavior on top of the default Controller is with a series of blueprint assignable delegates. OnDialogueStarted is called whenever a dialogue opens. OnDialogueEnded is called whenever a dialogue closes. And OnDialogueSpeechDisplayed is called whenever a speech is played, and it passes the speech data along to its subscribers. 
+
+![C_ControllerDelegateOptions](Images/C_ControllerDelegateOptions.png)
+
+Finally, you may not want to use the default Dialogue Controller at all. In that case you can implement your own version in blueprint by extending the base Dialogue Controller class and extending its relevant functions. 
+
+![C_ExtendBaseController](Images/C_ExtendBaseController.png)
+
+## How the Default Dialogue Controller Works
+
+With all of that said, if you're going to extend or replace the Dialogue Controller you're going to need some idea of its various functions and how they fit together. With that in mind, let's take a short tour around the default controller and how it operates. 
 
 Up at the top of the event graph, we have the Initialize event, which gets called from BeginPlay.
 
@@ -127,9 +184,19 @@ And finally, we have Handle Missing Speaker. This is an optional event to implem
 
 With the possible exceptions of Initialize and Handle Missing Speaker, a custom Dialogue Controller ought to implement each of these events. Your game won’t crash if it doesn’t. Your dialogues just won’t play.
 
-That said, even if you stick with the default Dialogue Controller, there’s a fair amount we can do to customize its functionality. Let’s say, for example, that you want to set up a special dialogue camera that flips back and forth between the various speakers. You could add functionality switching your dialogue camera on and off to the open and close display events. And under the Display Speech event, you could add a function or event call that sets the camera’s orientation based on who’s speaking. Similarly, if you want to hook in a lip sync function, you could tack it on as part of your custom Display Speech implementation. 
+## What Kind of Controller Customizations Can You Do?
 
-The point here is that every user-facing phase of dialogue has some kind of function that you can implement yourself, or otherwise modify to include whatever functionality you need. If none of this works the way you want, you’re able to scrap the default controller and create your own in Blueprint. 
+At this point we've covered the various extension points the Dialogue Controller includes to allow you to customize it to your needs. But what kind of customizations can you do, and how might you go about it? 
+
+Here we have an example class that extends BP_BasicDialogueController. 
+
+![C_ExampleChildOfDefaultController](Images/C_ExampleChildOfDefaultController.png)
+
+Let’s say you want to set up a special dialogue camera that flips back and forth between the various speakers. To do this, you could add functionality switching your dialogue camera on and off to the Open and Close Display events. And under the Display Speech event, you could add a function or event call that sets the camera’s orientation based on who’s speaking. 
+
+Similarly, if you want to hook in a lip sync function, you could tack it on as part of your custom Display Speech implementation. 
+
+The point here is that every user-facing phase of dialogue has some kind of function that you can implement yourself, or otherwise extend to include whatever functionality you need. If none of this works the way you want, you’re able to scrap the default controller and create your own in Blueprint. 
 
 The goal of this design was to create a somewhat modular approach, with default options to take the average user most of the way to a complete setup with minimal effort, but with the flexibility for full customization if it is needed.
 
@@ -141,7 +208,7 @@ We covered this somewhat in the Queries and Events tutorial, where we made a cus
 
 ![C_CustomSpeaker01](Images/C_CustomSpeaker01.png)
 
-Another good example is in the included CRPG Speaker Component, which includes a Texture property to use as a portrait. 
+Another good example is in the included CRPG Speaker Component, which introduces a Texture property to use as a portrait. 
 
 ![C_CustomSpeaker02](Images/C_CustomSpeaker02.png)
 
@@ -151,8 +218,8 @@ Ultimately, this is very open ended, so there's only so much advice I can offer 
 In this tutorial we:
 
 1. Reviewed the major objects that can be extended to customize dialogue in your project. These include the Dialogue Controller, the Display Widget, and the Speaker Components.
-2. Discussed how Display Widgets can be modified or replaced to customize the look of dialogue.
-3. Discussed how the Dialogue Controller can be modified or replaced to customize the behavior of dialogue on a more fundamental level.
+2. Discussed how Display Widgets can be extended or replaced to customize the look of dialogue.
+3. Discussed how the Dialogue Controller can be extended or replaced to customize the behavior of dialogue on a more fundamental level.
 4. Discussed how the Speaker Component can be extended to include additional data and functionality.
 
 This concludes the series of introductory tutorials I had planned to get people up to speed with Dialogue Tree. As a brief review:

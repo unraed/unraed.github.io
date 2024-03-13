@@ -147,7 +147,7 @@ Open up our new Blueprint Query. The first thing we want to do here is override 
 
 ![QE_OverrideQueryMethods](Images/QE_OverrideQueryMethods.png)
 
-We’ll start with Query Speaker since it’s the simplest of the bunch to explain. This function takes a Speaker Component, which will be supplied from the graph and returns the integer result of the Query.
+We’ll start with Query Speaker since it’s the simplest of the bunch to explain. This function takes a struct consisting of a Speaker Component and its owning Actor, which will be supplied from the graph, and it returns the integer result of the Query.
 
 ![QE_QuerySpeaker](Images/QE_QuerySpeaker.png)
 
