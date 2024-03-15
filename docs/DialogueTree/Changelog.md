@@ -61,3 +61,6 @@ Below you will find a brief summary of changes made to the plugin.
 - Made the default setting for the dialogue controller be to allow game input in dialogue 
 - Fixed an issue with the various skip() functions that prevented them from operating:
     * Please note that, if you set the controller to not allow game input while in dialogue, you will need an alternative way to call skip(). Please see the documentation for the [**Dialogue Controller**](Documentation/DialogueController.md) for more information.
+
+## 3/15/2024 - v1.1.2
+- Fixed a crash that sometimes occurred when the last two nodes in dialogue were a speech node with an input transition followed by an event node.

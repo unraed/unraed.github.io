@@ -62,13 +62,13 @@ If you are using the default BP_BasicDialogueController, you can override its di
 
 ![C_SetWidgetType01](Images/C_SetWidgetTypeInSettings.png)
 
-To tweak an existing Display Widget, you just need a basic knowledge of UMG. Create a new widget extending either W_BasicDialogueDisplay or W_CRPGDialogueDisplay. 
+To tweak an existing Display Widget, you just need a basic knowledge of UMG. First, open up your content browser settings and make sure "Show Engine Content" and "Show Plugin Content" are both checked. Then search the content browser for "Dialogue Tree." 
 
-![C_ExtendingDisplayWidget01](Images/C_ExtendingDisplayWidget01.png)
+That should bring up the plugin's content folder. Navigate to the widget you're interested in modifying, then copy and paste it into your project. 
 
-![C_ExtendingDisplayWidget02](Images/C_ExtendingDisplayWidget02.png)
+**Important: Make sure you copy and paste the widget into your project's content folder. Do not modify anything in the plugin's content folder directly. This content all exists on the engine side, and the engine doesn't like when you make changes here. Doing so has been known to cause crashes.**
 
-Opening the new widgets up in UMG will allow you to tweak their visuals to your liking.
+Opening the newly duplicated widget up in UMG will allow you to tweak its visuals to your liking.
 
 ![C_TweakingDisplay](Images/C_TweakingDisplay.png)
 
