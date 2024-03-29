@@ -6,7 +6,7 @@ permalink: /DialogueTree/Tutorials/QuickStart
 **Click [here](Contents.md) to return to the list of tutorials for Dialogue Tree.** 
 
 # Dialogue Tree: Quick Start Tutorial
-This tutorial is also available in video format [**here**](https://youtu.be/EdDaHHxv-SU). 
+This tutorial is also available in video format [**here**](https://youtu.be/IDR6i8hmXJg). 
 
 **Next:** [**Editor Guide**](EditorGuide.md)
 

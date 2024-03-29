@@ -6,7 +6,7 @@ permalink: /DialogueTree/Tutorials/QueriesAndEvents
 **Click [here](Contents.md) to return to the list of tutorials for Dialogue Tree.** 
 
 # Dialogue Tree: Queries and Events Tutorial
-This tutorial is also available in video format [**here**](https://youtu.be/ENdKu6cPi2s). 
+This tutorial is also available in video format [**here**](https://youtu.be/BG4slJyozmU). 
 
 **Previous:** [**Editor Guide**](EditorGuide.md),
 **Next:** [**Customization Tutorial**](Customization.md)

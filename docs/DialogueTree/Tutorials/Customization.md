@@ -6,7 +6,7 @@ permalink: /DialogueTree/Tutorials/Customization
 **Click [here](Contents.md) to return to the list of tutorials for Dialogue Tree.** 
 
 # Dialogue Tree: Customization Tutorial
-This tutorial is also available in video format [**here**](https://youtu.be/5T6BxHAUaB4). 
+This tutorial is also available in video format [**here**](https://youtu.be/blCsXXLg2-k). 
 
 **Previous:** [**Queries and Events**](QueriesAndEvents.md)
 
@@ -111,7 +111,7 @@ As of update 1.1, there are now several configuration options for the default co
 
 The "Widget Type" property, as we have already discussed, allows you to change the display widget that the default Controller will use. 
 
-"Widget ZOrder" allows you to change the ZOrder that the Controller will be spawned into in the player's viewport. If you are having an issue where the display widget appears but cannot be clicked on, it is usually because there is a "hit-testable" canvas panel in your project that is physically blocking the input. In such cases, increasing the "Widget ZOrder" value can help solve the issue. 
+"Widget ZOrder" allows you to change the ZOrder that the display widget will be spawned into in the player's viewport. If you are having an issue where the display widget appears but cannot be clicked on, it is usually because there is a "hit-testable" canvas panel in your project that is physically blocking the input. In such cases, increasing the "Widget ZOrder" value can help solve the issue. 
 
 The "Default Input Mode" is a struct that allows you to configure the input mode settings the default Dialogue Controller will use on exiting dialogue. 
 
