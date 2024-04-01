@@ -25,6 +25,7 @@ Dialogue Tree is a plugin for Unreal Engine 5 that allows you to design and play
 2. [**Documentation**](Documentation/Contents.md)
 3. [**Roadmap**](Roadmap.md)
 4. [**Changelog**](Changelog.md)
+5. [**GitHub Repository**](https://github.com/unraed/DialogueTree)
 
 ## Help & Support
 You can reach me for questions and support at unraedgames@gmail.com, or on the plugin's [**Discord Channel**](https://discord.gg/mf7mGXbePB). Feel free to reach out with any questions or requests. 
