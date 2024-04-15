@@ -11,7 +11,7 @@ The plugin settings can be found under ProjectSettings>>Dialogue Tree and offer 
 ## Contents
 1. [**Dialogue Controller Type**](PluginSettings.md#dialogue-controller-type)
 2. [**Default Dialogue Controller Settings**](PluginSettings.md#default-dialogue-controller-settings)
-    * [**Widget Type**](PluginSettings.md#widget-type)
+    * [**Widget Type**](PluginSettings.md#dialogue-widget-type)
     * [**Widget ZOrder**](PluginSettings.md#widget-zorder)
     * [**Default Input Mode**](PluginSettings.md#default-input-mode)
     * [**Allow Game Input in Dialogue**](PluginSettings.md#allow-game-input-in-dialogue)
@@ -24,10 +24,15 @@ By default, the system will use the provided BP_BasicDialogueController class.
 ## Default Dialogue Controller Settings
 The following settings apply specifically to the default BP_BasicDialogueController, which uses them as configuration options. 
 
-### Widget Type 
+### Dialogue Widget Type 
 The type of dialogue display widget that the controller will use to present dialogue to the user. Only valid widgets, implementing BI_SimpleDialogueDisplay will be selectable. 
 
 If none is supplied here, the controller will use W_BasicDialogueDisplay. 
+
+### Dialogue Option Widget Type
+The type of dialogue option widget that will be used to allow the player to pick options in dialogue. Only valid widgets, implementing BI_SimpleDialogueOption will be selectable. 
+
+If none is supplied here, the controller will use W_BasicDialogueOption. 
 
 ### Widget ZOrder
 Some users have found a conflict between the provided dialogue display widgets and their existing widgets. What is happening there is that their existing widgets have a canvas panel for a root. When the existing widget is set to "visible" using a function, the canvas panel becomes hit-testable. If it is situated above the dialogue widget in the viewport it winds up consuming mouse input before the input ever reaches the dialogue widget. 

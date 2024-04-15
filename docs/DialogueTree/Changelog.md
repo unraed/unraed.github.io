@@ -64,3 +64,10 @@ Below you will find a brief summary of changes made to the plugin.
 
 ## 3/15/2024 - v1.1.2
 - Fixed a crash that sometimes occurred when the last two nodes in dialogue were a speech node with an input transition followed by an event node.
+
+## Upcoming - v1.2.0
+- Added a new Option Lock Node to allow users to display unselectable options in dialogue, along 
+with a message indicating why the option is "locked." For example: "Mais, je suis Unraed! [You don't speak French]".
+- Refactored details panel customization code for greatly improved performance when changing conditions as well as target nodes and speakers. 
+- Made it possible to introduce a custom dialogue option widget when using the default controller 
+and default widgets. To do this, change the value of "Dialogue Option Widget Type" in Project Settings>>Dialogue Tree. 

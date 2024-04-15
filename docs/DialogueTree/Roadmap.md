@@ -52,6 +52,7 @@ If you would like to support further development on the project you can do so on
 - Tutorial on creating "Souls" style dialogue with a silent protagonist
 - Tutorial on setting up a dynamic dialogue camera which flips back and forth to point at whoever is speaking (as in The Witcher 3 and similar games)
 - Tutorial on saving and loading dialogue 
+- Tutorial on adding gamepad input / getting the plugin working with Common UI
 
 ## Notes 
 ### Note: Collapsing groups of nodes to a "macro"

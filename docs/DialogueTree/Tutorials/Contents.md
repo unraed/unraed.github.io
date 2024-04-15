@@ -18,3 +18,4 @@ The following tutorials cover the basics of using Dialogue Tree. Video versions 
 ## Feature Updates
 The following tutorials cover new features that have been added to the plugin over time. 
 1. [**Minimum Play Time**](MinimumPlayTime.md)
+2. [**Option Lock Nodes**](OptionLockNodeTutorial.md)

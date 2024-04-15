@@ -15,7 +15,9 @@ If you're enjoying the plugin, I would be extremely grateful if you could take a
 If you would like to support further development on the project you can do so on [**Patreon.com**](https://www.patreon.com/UnraedGames). 
 
 ## Contents
-1. [**Introduction**](Customization.md#introduction)
+1. [**Introduction**](MinimumPlayTime.md#introduction)
+2. [**How it Works**](MinimumPlayTime.md#how-it-works)
+3. [**Conclusion**](MinimumPlayTime.md#conclusion)
 
 ## Introduction 
 This is a very brief tutorial for the first significant new feature that has been added to the plugin: the addition of a minimum play time property for speech nodes. 

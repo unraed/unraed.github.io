@@ -14,6 +14,7 @@ This page serves as a list of the different dialogue nodes and their relevant pr
 3. [**Branch Node**](DialogueNodes.md#branch-node)
 4. [**Event Node**](DialogueNodes.md#event-node)
 5. [**Jump Node**](DialogueNodes.md#jump-node)
+6. [**Option Lock Node**](DialogueNodes.md#option-lock-node)
 
 
 ## Entry Node
@@ -70,3 +71,19 @@ when reverting control to earlier points in dialogue.
  * **JumpTarget:** The node we wish to "jump" control of dialogue to. 
 
 ![JumpNodeImage02](Images/JumpNodeImage02.png)
+
+## Option Lock Node
+Node that serves a conditional filter for a single dialogue option. Attempting to traverse the node directly simply transfers control on to its child -- in other words, the node only has an impact when placed after a speech node with an input transition. Attempting to retrieve the node as an option has the following outcomes:
+
+![OptionLockNodeImage02](Images/OptionLockNodeImage02.png)
+
+- If the conditions succeed, the child node is displayed as an option in its normal "unlocked" state.
+- If the conditions fail, the child node is displayed as a "locked" option. Such an option is unselectable. Moreover, when used with the default controller/widgets the option button itself will be greyed out and disabled. 
+
+![OptionLockNodeImage01](Images/OptionLockNodeImage01.png)
+
+**Properties:**
+ * **bIfAny:** Whether the node evaluates to true if any single condition does, or if all conditions must evaluate to true for the node as a whole to do so.
+ * **Conditions:** List of [**Dialogue Conditions**](DialogueCondition.md) associated with the node.
+ * **Locked Message:** Optional FText message to display when the option is locked. For example, "Mais, je suis Unraed! [You don't speak French]"
+ * **Unlocked Message:** Optional FText message to display when the option is unlocked. For example, "Mais, je suis Unraed! [You speak French]"

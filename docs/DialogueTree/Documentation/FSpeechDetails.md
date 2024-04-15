@@ -16,6 +16,8 @@ Struct used to pass information about an individual dialogue speech.
    * [**Behavior Flags**](FSpeechDetails.md#behavior-flags-blueprintreadonly)
    * [**bIgnoreContent**](FSpeechDetails.md#bignorecontent-blueprintreadonly)
    * [**bCanSkip**](FSpeechDetails.md#bcanskip-blueprintreadonly)
+   * [**bIsLocked**](FSpeechDetails.md#bislocked-blueprintreadonly)
+   * [**OptionMessage**](FSpeechDetails.md#optionmessage-blueprintreadonly)
 
 ## 1. Data Attributes 
 The following are the data attributes associated with the struct. 
@@ -56,5 +58,16 @@ The following are the data attributes associated with the struct.
 * **Type:** bool
 * **Access:** Public
 * **Description:** Whether the player is allowed to skip the speech. Defaults to true. 
+<br>
 
+### bIsLocked (BlueprintReadOnly)
+* **Type:** bool 
+* **Access:** Public
+* **Description:** Used only on speech options. Whether the option is locked or free to be selected.
+<br>
 
+### OptionMessage (BlueprintReadOnly)
+* **Type:** FText 
+* **Access:** Public
+* **Description:** Used only on speech options. Optional message to attach to the speech when used as an option.
+<br>
