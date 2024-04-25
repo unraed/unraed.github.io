@@ -65,6 +65,9 @@ Below you will find a brief summary of changes made to the plugin.
 ## 3/15/2024 - v1.1.2
 - Fixed a crash that sometimes occurred when the last two nodes in dialogue were a speech node with an input transition followed by an event node.
 
+## 4/25/2024 - v1.1.3
+- Added compatibility with Unreal Engine v5.4. Please note that other engine versions will continue to use plugin v1.1.2, as there are no user-facing changes between the two versions.
+
 ## Upcoming - v1.2.0
 - Added a new Option Lock Node to allow users to display unselectable options in dialogue, along 
 with a message indicating why the option is "locked." For example: "Mais, je suis Unraed! [You don't speak French]".
