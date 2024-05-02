@@ -12,6 +12,7 @@ Dialogue events can be used to trigger an effect from dialogue on the wider worl
 1. [**Built in Events**](DialogueEvent.md#1-built-in-events)
    * [**Reset Node Visits**](DialogueEvent.md#reset-node-visits)
    * [**Reset all Node Visits**](DialogueEvent.md#reset-all-node-visits)
+   * [**Set Resume Node**](DialogueEvent.md#set-resume-node)
    * [**DTE_LogToScreen**](DialogueEvent.md#dte_logtoscreen)
 2. [**Data Attributes**](DialogueEvent.md#2-data-attributes)
    * [**Speaker**](DialogueEvent.md#speaker-editanywhere)
@@ -34,6 +35,10 @@ Marks the specified node unvisited. Requires the user to stipulate the target no
 
 #### Reset All Node Visits
 Marks all nodes in the dialogue unvisited, effectively resetting it to an unplayed state. 
+<br>
+
+#### Set Resume Node
+Sets the node for the current dialogue to resume from when starting dialogue with "bResume" set to true. 
 <br>
 
 #### DTE_LogToScreen

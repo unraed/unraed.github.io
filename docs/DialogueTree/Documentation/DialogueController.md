@@ -23,6 +23,8 @@ Some important considerations:
    * [**Get Speakers**](DialogueController.md#get-speakers-blueprintcallable-virtual-pure)
    * [**Start Dialogue With Names**](DialogueController.md#start-dialogue-with-names-blueprintcallable)
    * [**Start Dialogue**](DialogueController.md#start-dialogue-blueprintcallable)
+   * [**Start Dialogue With Names At**](DialogueController.md#start-dialogue-with-names-at-blueprintcallable)
+   * [**Start Dialogue At**](DialogueController.md#start-dialogue-at-blueprintcallable)
    * [**End Dialogue**](DialogueController.md#end-dialogue-blueprintcallable)
    * [**Skip**](DialogueController.md#skip-blueprintcallable)
    * [**Clear Node Visits**](DialogueController.md#clear-node-visits-blueprintcallable)
@@ -83,8 +85,11 @@ virtual TMap<FName, UDialogueSpeakerComponent*> GetSpeakers() const;
 * @param InDialogue - UDialogue*, the dialogue to start. 
 * @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
 * Speaker Components mapped to their names in dialogue.
+* @param bResume - bool - If true, the dialogue will resume from the marked
+* resume node (if any). If false, the dialogue will start over.
 */
-void StartDialogueWithNames(UDialogue* InDialogue, TMap<FName, UDialogueSpeakerComponent*> InSpeakers);
+void StartDialogueWithNames(UDialogue* InDialogue, 
+   TMap<FName, UDialogueSpeakerComponent*> InSpeakers, bool bResume);
 ```
 <br>
 
@@ -98,8 +103,44 @@ void StartDialogueWithNames(UDialogue* InDialogue, TMap<FName, UDialogueSpeakerC
 * @param InDialogue - UDialogue*, the dialogue to start.
 * @param InSpeakers - TArray<UDialogueSpeakerComponent*>, Speaker 
 * Components to use.
+* @param bResume - bool - If true, the dialogue will resume from the marked
+* resume node (if any). If false, the dialogue will start over.
 */
-void StartDialogue(UDialogue* InDialogue, TArray<UDialogueSpeakerComponent*> InSpeakers);
+void StartDialogue(UDialogue* InDialogue, TArray<UDialogueSpeakerComponent*> InSpeakers,
+   bool bResume);
+```
+<br>
+
+### Start Dialogue With Names At (BlueprintCallable)
+```cpp
+/**
+* Starts the provided dialogue with the provided speaker
+* components at the given dialogue node ID. Matches speakers to dialogue
+* roles using the provided name-speaker pairings.
+*
+* @param InDialogue - UDialogue*, the dialogue to start.
+* @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
+* Speaker Components mapped to their names in dialogue.
+*/
+void StartDialogueWithNamesAt(UDialogue* InDialogue, FName NodeID,
+	TMap<FName, UDialogueSpeakerComponent*> InSpeakers);
+```
+<br>
+
+### Start Dialogue At (BlueprintCallable)
+```cpp
+/**
+* Starts the provided dialogue with the provided speaker
+* components at the given dialogue node ID. Matches the speakers to
+* dialogue roles using their dialogue names. Duplicate or unfilled names
+* not allowed.
+*
+* @param InDialogue - UDialogue*, the dialogue to start.
+* @param InSpeakers - TArray<UDialogueSpeakerComponent*>, Speaker
+* Components to use.
+*/
+void StartDialogueAt(UDialogue* InDialogue, FName NodeID,
+   TArray<UDialogueSpeakerComponent*> InSpeakers);
 ```
 <br>
 

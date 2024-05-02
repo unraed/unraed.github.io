@@ -23,11 +23,13 @@ A component representing a “Speaker” or participant in a dialogue. Serves as
    * [**Start Owned Dialogue**](DialogueSpeakerComponent.md#start-owned-dialogue-blueprintcallable)
    * [**Start Dialogue With Names**](DialogueSpeakerComponent.md#start-dialogue-with-names-blueprintcallable)
    * [**Start Dialogue**](DialogueSpeakerComponent.md#start-dialogue-blueprintcallable)
+   * [**Start Owned Dialogue With Names At**](DialogueSpeakerComponent.md#start-owned-dialogue-with-names-at-blueprintcallable)
+   * [**Start Owned Dialogue At**](DialogueSpeakerComponent.md#start-owned-dialogue-at-blueprintcallable)
+   * [**Start Dialogue With Names At**](DialogueSpeakerComponent.md#start-dialogue-with-names-at-blueprintcallable)
+   * [**Start Dialogue At**](DialogueSpeakerComponent.md#start-dialogue-at-blueprintcallable)
    * [**End Current Dialogue**](DialogueSpeakerComponent.md#end-current-dialogue-blueprintcallable)
    * [**Try Skip Speech**](DialogueSpeakerComponent.md#try-skip-speech-blueprintcallable)
-2. [**Blueprint Implementable Methods**](DialogueSpeakerComponent.md#2-blueprint-implementable-methods)
-   * [**Get Dialogue Controller**](DialogueSpeakerComponent.md#get-dialogue-controller-blueprintimplementableevent)
-3. [**Data Attributes**](DialogueSpeakerComponent.md#3-data-attributes)
+2. [**Data Attributes**](DialogueSpeakerComponent.md#2-data-attributes)
    * [**Display Name**](DialogueSpeakerComponent.md#display-name-editanywhere-blueprintreadwrite)
    * [**Dialogue Name**](DialogueSpeakerComponent.md#dialogue-name-editanywhere-blueprintreadwrite)
    * [**Owned Dialogue**](DialogueSpeakerComponent.md#owned-dialogue-editanywhere-blueprintreadwrite)
@@ -126,8 +128,12 @@ FGameplayTagContainer GetBehaviorFlags();
 * 
 * @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
 * the speaker components to pass to the dialogue. 
+* @param bResume - bool, If true will resume dialogue from the marked resume
+* node (if any). If false will start dialogue from the beginning. Defaults to 
+* false. 
 */
-void StartOwnedDialogueWithNames(TMap<FName, UDialogueSpeakerComponent*> InSpeakers);\
+void StartOwnedDialogueWithNames(TMap<FName, UDialogueSpeakerComponent*> InSpeakers, 
+   bool bResume);
 ```
 <br>
 
@@ -140,8 +146,11 @@ void StartOwnedDialogueWithNames(TMap<FName, UDialogueSpeakerComponent*> InSpeak
 * 
 * @param InSpeakers - TArray<UDialogueSpeakerComponent*>, the conversing 
 * speakers. 
+* @param bResume - bool, If true will resume dialogue from the marked resume
+* node (if any). If false will start dialogue from the beginning. Defaults to 
+* false. 
 */
-void StartOwnedDialogue(TArray<UDialogueSpeakerComponent*> InSpeakers);
+void StartOwnedDialogue(TArray<UDialogueSpeakerComponent*> InSpeakers, bool bResume);
 ```
 <br>
 
@@ -154,8 +163,12 @@ void StartOwnedDialogue(TArray<UDialogueSpeakerComponent*> InSpeakers);
 * @param InDialogue - UDialogue*, the dialogue to start. 
 * @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
 * the speaker components to pass to the dialogue. 
+* @param bResume - bool, If true will resume dialogue from the marked resume
+* node (if any). If false will start dialogue from the beginning. Defaults to 
+* false. 
 */
-void StartDialogueWithNames(UDialogue* InDialogue, TMap<FName, UDialogueSpeakerComponent*> InSpeakers);
+void StartDialogueWithNames(UDialogue* InDialogue, 
+   TMap<FName, UDialogueSpeakerComponent*> InSpeakers, bool bResume);
 ```
 <br>
 
@@ -169,8 +182,76 @@ void StartDialogueWithNames(UDialogue* InDialogue, TMap<FName, UDialogueSpeakerC
 * @param InDialogue - UDialogue*, the dialogue to start. 
 * @param InSpeakers - TArray<UDialogueSpeakerComponent*> the conversing
 * speakers. 
+* @param bResume - bool, If true will resume dialogue from the marked resume
+* node (if any). If false will start dialogue from the beginning. Defaults to 
+* false. 
 */
-void StartDialogue(UDialogue* InDialogue, TArray<UDialogueSpeakerComponent*> InSpeakers);
+void StartDialogue(UDialogue* InDialogue, TArray<UDialogueSpeakerComponent*> InSpeakers, 
+   bool bResume);
+```
+<br>
+
+### Start Owned Dialogue With Names At (BlueprintCallable)
+```cpp
+/**
+* Starts the default dialogue for this speaker component at the given 
+* NodeID location. Uses the provided name-speaker pairings for matching 
+* with target dialogue.
+*
+* @param InNodeID - FName, the target node ID to start at. 
+* @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
+* the speaker components to pass to the dialogue.
+*/
+void StartOwnedDialogueWithNamesAt(FName InNodeID, 
+   TMap<FName, UDialogueSpeakerComponent*> InSpeakers);
+```
+<br>
+
+### Start Owned Dialogue At (BlueprintCallable)
+```cpp
+/**
+* Starts the default dialogue for this speaker component at the given node 
+* ID. Attempts to match the provided speaker's dialogue names to those 
+* expected by the dialogue. Duplicate or unfilled names not allowed.
+*
+* @param InNodeID - FName, the target node to start at. 
+* @param InSpeakers - TArray<UDialogueSpeakerComponent*>, the conversing
+* speakers.
+*/
+void StartOwnedDialogueAt(FName InNodeID, TArray<UDialogueSpeakerComponent*> InSpeakers);
+```
+<br>
+
+### Start Dialogue With Names At (BlueprintCallable)
+```cpp
+/**
+* Starts the given dialogue at the given node ID. Uses the provided 
+* name-speaker pairings for matching with target dialogue.
+*
+* @param InDialogue - UDialogue*, the dialogue to start.
+* @param InNodeID - FName, the target node to start at. 
+* @param InSpeakers - TMap<FName, UDialogueSpeakerComponent*>,
+* the speaker components to pass to the dialogue.
+*/
+void StartDialogueWithNamesAt(UDialogue* InDialogue, FName InNodeID,
+	TMap<FName, UDialogueSpeakerComponent*> InSpeakers);
+```
+<br>
+
+### Start Dialogue At (BlueprintCallable)
+```cpp
+/**
+* Starts the given dialogue at the given node ID. Uses the provided 
+* speakers' dialogue names for matching with target dialogue. Duplicate 
+* or unfilled dialogue names not allowed.
+*
+* @param InNodeID - FName, the target node to start at. 
+* @param InDialogue - UDialogue*, the dialogue to start.
+* @param InSpeakers - TArray<UDialogueSpeakerComponent*> the conversing
+* speakers.
+*/
+void StartDialogueAt(UDialogue* InDialogue, FName InNodeID,
+	TArray<UDialogueSpeakerComponent*> InSpeakers);
 ```
 <br>
 
@@ -194,24 +275,7 @@ void TrySkipSpeech();
 ```
 **Note:** A common issue encountered here occurs when game input is set to not be allowed in the project settings. This blocks all input, which prevents TrySkipSpeech() getting called. You can bypass this restriction in one of two ways. Either allow game input while in dialogue, or implement an override of OnKeyDown() or OnMouseDown() in a custom Dialogue Widget. 
 
-
-## 2. Blueprint Implementable Methods 
-The following methods are intended to be implemented by the user in blueprint when creating a custom speaker component.
-<br>
-
-### Get Dialogue Controller (BlueprintImplementableEvent)
-```cpp
-/**
-* Retrieves the dialogue controller. BlueprintImplementable to suit 
-* variable user setups for the controller. 
-* 
-* @return ADialogueController*, the controller found.
-*/
-ADialogueController* GetDialogueController();
-```
-<br>
-
-## 3. Data Attributes 
+## 2. Data Attributes 
 Data attributes associated with the class. 
 <br>
 

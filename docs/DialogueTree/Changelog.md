@@ -69,8 +69,23 @@ Below you will find a brief summary of changes made to the plugin.
 - Added compatibility with Unreal Engine v5.4. Please note that other engine versions will continue to use plugin v1.1.2, as there are no user-facing changes between the two versions.
 
 ## Upcoming - v1.2.0
+**Available on Patreon as of 1.2, Beta 1**
 - Added a new Option Lock Node to allow users to display unselectable options in dialogue, along 
 with a message indicating why the option is "locked." For example: "Mais, je suis Unraed! [You don't speak French]".
 - Refactored details panel customization code for greatly improved performance when changing conditions as well as target nodes and speakers. 
 - Made it possible to introduce a custom dialogue option widget when using the default controller 
 and default widgets. To do this, change the value of "Dialogue Option Widget Type" in Project Settings>>Dialogue Tree. 
+
+**Available on Patreon as of 1.2, Beta 2**
+
+Please note that many of the new features require you to recompile your dialogues. All existing dialogues will work as before; you just need to reclick the compile button. 
+
+- Added the ability to start dialogue from an arbitrary node using new StartDialogueAt(NodeID) functions. The Node ID is an FName matching the speech title in the graph. 
+- Added the option to resume dialogue from a preset location rather than starting from either the beginning or an arbitrary node. 
+- Added a dialogue event to set the resume node from dialogue. 
+- Changed the storage of dialogue nodes to be indexed by a unique FNameID matching the graph node's speech title. This is a precondition for the ability to start dialogue at an arbitrary point (see above).
+- Fixed a crash resulting from attempting to call SelectOption() when no dialogue is playing.
+- Fixed a bug that caused audio from a speech with an input transition to continue playing after selecting an option, causing two nodes to try "talking over each other." 
+
+**Plans for 1.2, Beta 3**
+- I intend to work on adding cinematics integration next. 

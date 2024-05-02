@@ -23,9 +23,9 @@ The following are the data attributes associated with the struct.
 * **Description:** Name associated with the dialogue to which the visitation data belongs.
 <br>
 
-### Visited Node Indices (BlueprintReadOnly, SaveGame)
-* **Type:** TSet\<int32\>
+### Visited Node IDs (BlueprintReadOnly, SaveGame)
+* **Type:** TSet\<FName\>
 * **Access:** Public
-* **Description:** Indices of nodes in the dialogue that have already been visited.
+* **Description:** IDs of nodes in the dialogue that have already been visited.
 <br>
 

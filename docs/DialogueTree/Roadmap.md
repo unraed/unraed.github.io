@@ -36,7 +36,12 @@ If you would like to support further development on the project you can do so on
 - A new transition type for speech nodes that automatically transitions to one of the node's children at random (New functionality) [Note](Roadmap.md#note-random-child-speech-transition)
 - A new transition type for speech nodes that, each time it is visited, plays each of the node's children in sequence (New functionality) [Note](Roadmap.md#note-sequential-child-speech-transition)
 - A built in solution for hooking dialogue into sequences/cutscenes (New functionality)
-- CSV/Data table import/export option for dialogues?
+- CSV/Data table import/export option for dialogues
+- Debug mode (possibly with muted audio - will require some thought)
+- Bugfix: Skip currently continues to play previous node and next node.
+- Change skip behavior for input transition nodes so that the nodes by default wait to display options and only display them after a skip. Alternatively so that this behavior is selectable as an option.
+- Add a setting to set the default minimum duration for nodes
+
 
 ## Completed 
 - Configurable duration for speech nodes that do not have audio
