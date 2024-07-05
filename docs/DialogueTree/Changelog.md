@@ -93,7 +93,8 @@ Please note that many of the new features require you to recompile your dialogue
 - Gave dialogue events the ability to "block" until a condition is met. For example, if you had an event where you wanted a character to move from point A to point B, you could make the dialogue wait to transition out of the event node until the character reached point B. 
 - Made speeches able to play dialogue events, complete with blocking until events finish. 
 - Added a function in dialogue events that allows them to retrieve the speech details struct of any speech they were called from. If the dialogue event was called from a normal event node rather than a speech, this function will return an empty speech details struct. 
-- Added an event that spawns and plays a cinematic, automatically attempting to bind event speakers using their dialogue names for tags.
+- Added a helper function to dialogue events allowing them to more easily spawn actors into the current world. "SpawnActorToCurrentWorld()" is functionally the same as "SpawnActorOfClass()". 
+- Added a dialogue event that spawns and plays a cinematic, automatically attempting to bind event speakers using their dialogue names for tags.
 - Added the option to Skip() events, complete with a new function to define skipping behavior in the dialogue event.
 - Changed input transition symbol to more clearly differentiate it from the autotransition.
 - Added helper function to dialogue events to more easily spawn actors into the world. 
