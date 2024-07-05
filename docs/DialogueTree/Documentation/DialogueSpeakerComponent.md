@@ -29,12 +29,15 @@ A component representing a “Speaker” or participant in a dialogue. Serves as
    * [**Start Dialogue At**](DialogueSpeakerComponent.md#start-dialogue-at-blueprintcallable)
    * [**End Current Dialogue**](DialogueSpeakerComponent.md#end-current-dialogue-blueprintcallable)
    * [**Try Skip Speech**](DialogueSpeakerComponent.md#try-skip-speech-blueprintcallable)
-2. [**Data Attributes**](DialogueSpeakerComponent.md#2-data-attributes)
+2. [**Blueprint Implementable Methods**](DialogueSpeakerComponent.md#2-blueprint-implementable-methods)
+   * [**Play Speech Audio Clip**](DialogueSpeakerComponent.md#play-speech-audio-clip-blueprintnativeevent)
+3. [**Data Attributes**](DialogueSpeakerComponent.md#3-data-attributes)
    * [**Display Name**](DialogueSpeakerComponent.md#display-name-editanywhere-blueprintreadwrite)
    * [**Dialogue Name**](DialogueSpeakerComponent.md#dialogue-name-editanywhere-blueprintreadwrite)
    * [**Owned Dialogue**](DialogueSpeakerComponent.md#owned-dialogue-editanywhere-blueprintreadwrite)
    * [**Behavior Flags**](DialogueSpeakerComponent.md#behavior-flags-blueprintreadonly)
    * [**On Behavior Flags Changed**](DialogueSpeakerComponent.md#on-behavior-flags-changed-blueprintassignable)
+   * [**On Speaker Speech Skipped**](DialogueSpeakerComponent.md#on-speech-skipped-blueprintassignable)
 
 ## 1. Blueprint Callable Methods 
 The following methods can be called but not overridden via blueprint.
@@ -275,7 +278,23 @@ void TrySkipSpeech();
 ```
 **Note:** A common issue encountered here occurs when game input is set to not be allowed in the project settings. This blocks all input, which prevents TrySkipSpeech() getting called. You can bypass this restriction in one of two ways. Either allow game input while in dialogue, or implement an override of OnKeyDown() or OnMouseDown() in a custom Dialogue Widget. 
 
-## 2. Data Attributes 
+## 2. Blueprint Implementable Methods
+
+The following methods can have their behavior implemented or altered in blueprints. 
+
+### Play Speech Audio Clip (BlueprintNativeEvent)
+```cpp
+/**
+* Plays the given audio clip. Exposed to blueprint to be
+* user-overridable. 
+* 
+* @param InAudio - USoundBase*, the audio clip. 
+*/
+void PlaySpeechAudioClip(USoundBase* InAudio);
+```
+<br>
+
+## 3. Data Attributes 
 Data attributes associated with the class. 
 <br>
 
@@ -309,5 +328,11 @@ Updated for every new speech. Makes use of Unreal's GameplayTag system.
 * **Type:** FOnBehaviorFlagsChanged
 * **Access:** Public
 * **Description:** Delegate used to let others know when behavior flags change. Takes an event/function whose parameter is an FGameplayTagContainer representing the new "behavior flags" for the speaker's current speech.
+<br>
+
+### On Speech Skipped (BlueprintAssignable) 
+* **Type:** FSpeakerSpeechSignature
+* **Access:** Public
+* **Description:** Delegate used to let others know when this speaker's speech was skipped. 
 <br>
 

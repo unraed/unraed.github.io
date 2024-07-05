@@ -11,6 +11,7 @@ The plugin settings can be found under ProjectSettings>>Dialogue Tree and offer 
 ## Contents
 1. [**Dialogue Controller Type**](PluginSettings.md#dialogue-controller-type)
 2. [**Default Dialogue Controller Settings**](PluginSettings.md#default-dialogue-controller-settings)
+    * [**Default Minimum Play Time**](PluginSettings.md#default-minimum-play-time)
     * [**Widget Type**](PluginSettings.md#dialogue-widget-type)
     * [**Widget ZOrder**](PluginSettings.md#widget-zorder)
     * [**Default Input Mode**](PluginSettings.md#default-input-mode)
@@ -23,6 +24,9 @@ By default, the system will use the provided BP_BasicDialogueController class.
 
 ## Default Dialogue Controller Settings
 The following settings apply specifically to the default BP_BasicDialogueController, which uses them as configuration options. 
+
+### Default Minimum Play Time 
+The default minimum play time (in seconds) for a speech in dialogue. Can be overridden on individual speeches.
 
 ### Dialogue Widget Type 
 The type of dialogue display widget that the controller will use to present dialogue to the user. Only valid widgets, implementing BI_SimpleDialogueDisplay will be selectable. 

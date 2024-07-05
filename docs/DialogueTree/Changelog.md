@@ -87,5 +87,16 @@ Please note that many of the new features require you to recompile your dialogue
 - Fixed a crash resulting from attempting to call SelectOption() when no dialogue is playing.
 - Fixed a bug that caused audio from a speech with an input transition to continue playing after selecting an option, causing two nodes to try "talking over each other." 
 
-**Plans for 1.2, Beta 3**
-- I intend to work on adding cinematics integration next. 
+**1.2, Beta 3**
+- Fixed a bug in point and click type games where setting the input mode to Game Only resulted in users having to double click instead of single click in the world.
+- Added a new setting allowing users to set the default minimum play time for new speech nodes. Minimum play time can still be edited on the speech nodes themselves. 
+- Gave dialogue events the ability to "block" until a condition is met. For example, if you had an event where you wanted a character to move from point A to point B, you could make the dialogue wait to transition out of the event node until the character reached point B. 
+- Made speeches able to play dialogue events, complete with blocking until events finish. 
+- Added a function in dialogue events that allows them to retrieve the speech details struct of any speech they were called from. If the dialogue event was called from a normal event node rather than a speech, this function will return an empty speech details struct. 
+- Added an event that spawns and plays a cinematic, automatically attempting to bind event speakers using their dialogue names for tags.
+- Added the option to Skip() events, complete with a new function to define skipping behavior in the dialogue event.
+- Changed input transition symbol to more clearly differentiate it from the autotransition.
+- Added helper function to dialogue events to more easily spawn actors into the world. 
+- Fixed a bug that caused the graph description of a dialogue event not to update in the details panel until the dialogue graph was closed and then reopened. 
+- By request, moved the playing of speech audio into a blueprintnative function on the speaker component called "PlaySpeechAudioClip()". This allows users to override the way audio is handled by creating a custom speaker component in blueprint. 
+- By request, added a bindable delegate to the speaker component that can be used to assign custom behavior when a speech is skipped. 
