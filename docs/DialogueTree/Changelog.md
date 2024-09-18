@@ -68,28 +68,18 @@ Below you will find a brief summary of changes made to the plugin.
 ## 4/25/2024 - v1.1.3
 - Added compatibility with Unreal Engine v5.4. Please note that other engine versions will continue to use plugin v1.1.2, as there are no user-facing changes between the two versions.
 
-## Upcoming - v1.2.0
-**Available on Patreon as of 1.2, Beta 1**
-- Added a new Option Lock Node to allow users to display unselectable options in dialogue, along 
-with a message indicating why the option is "locked." For example: "Mais, je suis Unraed! [You don't speak French]".
-- Refactored details panel customization code for greatly improved performance when changing conditions as well as target nodes and speakers. 
-- Made it possible to introduce a custom dialogue option widget when using the default controller 
-and default widgets. To do this, change the value of "Dialogue Option Widget Type" in Project Settings>>Dialogue Tree. 
-
-**Available on Patreon as of 1.2, Beta 2**
-
+## 9/18/2024 - v1.2.0
 Please note that many of the new features require you to recompile your dialogues. All existing dialogues will work as before; you just need to reclick the compile button. 
 
+**Features**
+- Added a new Option Lock Node to allow users to display unselectable options in dialogue, along 
+with a message indicating why the option is "locked." For example: "Mais, je suis Unraed! [You don't speak French]".
+- Made it possible to introduce a custom dialogue option widget when using the default controller 
+and default widgets. To do this, change the value of "Dialogue Option Widget Type" in Project Settings>>Dialogue Tree. 
 - Added the ability to start dialogue from an arbitrary node using new StartDialogueAt(NodeID) functions. The Node ID is an FName matching the speech title in the graph. 
 - Added the option to resume dialogue from a preset location rather than starting from either the beginning or an arbitrary node. 
 - Added a dialogue event to set the resume node from dialogue. 
-- Changed the storage of dialogue nodes to be indexed by a unique FNameID matching the graph node's speech title. This is a precondition for the ability to start dialogue at an arbitrary point (see above).
-- Fixed a crash resulting from attempting to call SelectOption() when no dialogue is playing.
-- Fixed a bug that caused audio from a speech with an input transition to continue playing after selecting an option, causing two nodes to try "talking over each other." 
-
-**1.2, Beta 3**
-- Fixed a bug in point and click type games where setting the input mode to Game Only resulted in users having to double click instead of single click in the world.
-- Added a new setting allowing users to set the default minimum play time for new speech nodes. Minimum play time can still be edited on the speech nodes themselves. 
+- Added a new setting allowing users to set the default minimum play time for new speech nodes. Minimum play time can still be edited on the speech nodes themselves. This setting defaults to 3 seconds.
 - Gave dialogue events the ability to "block" until a condition is met. For example, if you had an event where you wanted a character to move from point A to point B, you could make the dialogue wait to transition out of the event node until the character reached point B. 
 - Made speeches able to play dialogue events, complete with blocking until events finish. 
 - Added a function in dialogue events that allows them to retrieve the speech details struct of any speech they were called from. If the dialogue event was called from a normal event node rather than a speech, this function will return an empty speech details struct. 
@@ -98,6 +88,18 @@ Please note that many of the new features require you to recompile your dialogue
 - Added the option to Skip() events, complete with a new function to define skipping behavior in the dialogue event.
 - Changed input transition symbol to more clearly differentiate it from the autotransition.
 - Added helper function to dialogue events to more easily spawn actors into the world. 
-- Fixed a bug that caused the graph description of a dialogue event not to update in the details panel until the dialogue graph was closed and then reopened. 
 - By request, moved the playing of speech audio into a blueprintnative function on the speaker component called "PlaySpeechAudioClip()". This allows users to override the way audio is handled by creating a custom speaker component in blueprint. 
 - By request, added a bindable delegate to the speaker component that can be used to assign custom behavior when a speech is skipped. 
+
+**Bug Fixes and Misc.**
+- Refactored details panel customization code for greatly improved performance when changing conditions as well as target nodes and speakers. 
+- Changed the storage of dialogue nodes to be indexed by a unique FNameID matching the graph node's speech title. This is a precondition for the ability to start dialogue at an arbitrary point (see above).
+- Fixed a crash resulting from attempting to call SelectOption() when no dialogue is playing.
+- Fixed a bug that caused audio from a speech with an input transition to continue playing after selecting an option, causing two nodes to try "talking over each other." 
+- Fixed a bug in point and click type games where setting the input mode to Game Only resulted in users having to double click instead of single click in the world.
+- Fixed a bug that caused the graph description of a dialogue event not to update in the details panel until the dialogue graph was closed and then reopened. 
+- Closed an edge case that I think was causing an issue where dialogue graphs would get "wiped." For context, I think what was happening is that the dialogue graph was loading in too late on some projects, causing a new graph to be generated. I was not able to replicate the issue, however, so I would be very grateful for reports of whether or not it is now fixed. 
+- Renamed "Behavior Flags" to "Gameplay Tags" for greater clarity. 
+- Replaced some "hard" pointers with their soft equivalents to better account for conflicts with other plugins. Changing loading phase to "Post-Default" introduced its own crashes, so I have opted to leave it at "Pre-Default" for now and rely on the soft pointers. 
+- Fixed a bug that caused a crash when compiling a dialogue that contained a node with connections back to a parent node. 
+- Fixed crash that could occur when attempting to play an empty dialogue.

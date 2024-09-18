@@ -47,22 +47,7 @@ If you would like to support further development on the project you can do so on
 - Dynamic speech duration (New functionality)?
 - Labels/subtitles for event/branch/etc nodes (Quality of Life)
 - Formatted speeches (New functionality)
-
-# Next
-- Fix Bug: Common UI incompatibility caused by TSubclassOf<> in dialogue settings. Changing to TSoftClassPtr<> reportedly fixes. 
-
-## Completed 
-- Configurable duration for speech nodes that do not have audio
-- Switched Behavior Flags from a Set to a GameplayTagContainer for a much more flexible approach. 
-- Changed the way variables are pulled from Queries and Events to create fields in the Graph's details panel. This removes the restriction around the types of variables that can be filled from the editor and simplifies the creation of custom graph descriptions.
-- Fixed a benign but annoying issue where the events Reset Node Visits and Reset All Node Visits required a Speaker to be selected in the graph despite having nothing to do with speakers.
-- Moved the node visitation memory of dialogue from following the game instance's lifespan to that of the world. 
-- Fix bug caused by Epic's implementation of SetInputMode(GameOnly) -> causes clicks to be doubled afterwards.
-- Add a setting to set the default minimum duration for nodes.
-- Bugfix: Skip currently continues to play previous node and next node.
-- Another function for starting dialogue that allows the user to specify a specific "key node" to start at (New functionality) 
-- An option to make event nodes wait for a condition before proceeding (New functionality)
-- Rework speech transition icons so that there is more visual distinction - probably change input to a pure circle (Cosmetic)
+- Expose more details of the display widgets to child classes
 
 ## Planned Tutorials
 - Tutorial on hooking dialogue into a standard/basic interaction system 

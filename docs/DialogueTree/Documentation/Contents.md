@@ -23,7 +23,7 @@ If you would like to support further development on the project you can do so on
 4. [**Basic Dialogue Option Widget**](BasicDialogueOption.md)
 5. [**Dialogue Speaker Component**](DialogueSpeakerComponent.md)
 6. [**Dialogue Speaker Socket**](DialogueSpeakerSocket.md)
-7. [**FOnBehaviorFlagsChanged**](FOnBehaviorFlagsChanged.md)
+7. [**FOnGameplayTagsChanged**](FOnGameplayTagsChanged.md)
 8. [**FSpeechDetails**](FSpeechDetails.md) 
 9. [**Plugin Settings**](PluginSettings.md)
 

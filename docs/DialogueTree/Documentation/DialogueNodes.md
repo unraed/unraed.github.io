@@ -37,7 +37,7 @@ Note: As of plugin version 1.20, speech nodes are able to play dialogue events.
   * **Speech Audio:** The audio content of the speech.
   * **Minimum Play Time:** The minimum amount of time for the speech to display for if not skipped. 0.0f by default. 
   * **bCanSkip:** Whether the player is allowed to skip this speech. True by default.
-  * **BehaviorFlags:** Custom data tags associated with the speech. Can be used to help trigger animations, or in any other case where additional information about a speech is necessary. Structured as an FGameplayTagContainer. 
+  * **GameplayTags:** Custom data tags associated with the speech. Can be used to help trigger animations, or in any other case where additional information about a speech is necessary.  
   * **TransitionType:** The type of [**transition**](SpeechTransitions.md#speech-transitions) the the speech uses. Auto-transitions play all node content and then proceed immediately to the next node in the chain. Input transitions present a list of options from among the node's children and wait for the player to select one before continuing.
   * **Events:** The list of Dialogue Events to play.
 

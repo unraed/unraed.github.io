@@ -18,7 +18,7 @@ A component representing a “Speaker” or participant in a dialogue. Serves as
    * [**Get Dialogue Name**](DialogueSpeakerComponent.md#get-dialogue-name-blueprintcallable-pure)
    * [**Set Owned Dialogue**](DialogueSpeakerComponent.md#set-owned-dialogue-blueprintcallable)
    * [**Get Owned Dialogue**](DialogueSpeakerComponent.md#get-owned-dialogue-blueprintcallable-pure)
-   * [**Get Behavior Flags**](DialogueSpeakerComponent.md#get-behavior-flags-blueprintcallable-pure)
+   * [**Get Gameplay Tags**](DialogueSpeakerComponent.md#get-gameplay-tags-blueprintcallable-pure)
    * [**Start Owned Dialogue With Names**](DialogueSpeakerComponent.md#start-owned-dialogue-with-names-blueprintcallable)
    * [**Start Owned Dialogue**](DialogueSpeakerComponent.md#start-owned-dialogue-blueprintcallable)
    * [**Start Dialogue With Names**](DialogueSpeakerComponent.md#start-dialogue-with-names-blueprintcallable)
@@ -35,8 +35,8 @@ A component representing a “Speaker” or participant in a dialogue. Serves as
    * [**Display Name**](DialogueSpeakerComponent.md#display-name-editanywhere-blueprintreadwrite)
    * [**Dialogue Name**](DialogueSpeakerComponent.md#dialogue-name-editanywhere-blueprintreadwrite)
    * [**Owned Dialogue**](DialogueSpeakerComponent.md#owned-dialogue-editanywhere-blueprintreadwrite)
-   * [**Behavior Flags**](DialogueSpeakerComponent.md#behavior-flags-blueprintreadonly)
-   * [**On Behavior Flags Changed**](DialogueSpeakerComponent.md#on-behavior-flags-changed-blueprintassignable)
+   * [**Gameplay Tags**](DialogueSpeakerComponent.md#gameplay-tags-blueprintreadonly)
+   * [**On Gameplay Tags Changed**](DialogueSpeakerComponent.md#on-gameplay-tags-changed-blueprintassignable)
    * [**On Speaker Speech Skipped**](DialogueSpeakerComponent.md#on-speech-skipped-blueprintassignable)
 
 ## 1. Blueprint Callable Methods 
@@ -111,14 +111,14 @@ UDialogue* GetOwnedDialogue();
 ```
 <br>
 
-### Get Behavior Flags (BlueprintCallable, Pure)
+### Get Gameplay Tags (BlueprintCallable, Pure)
 ```cpp
 /**
-* Gets gameplay tag container marking behavior flags for any ongoing speech. 
+* Gets gameplay tag container for any ongoing speech. 
 * 
 * @return FGameplayTagContainer
 */
-FGameplayTagContainer GetBehaviorFlags();
+FGameplayTagContainer GetGameplayTags();
 ```
 <br>
 
@@ -316,18 +316,18 @@ Data attributes associated with the class.
 * **Description:** The default dialogue to start when initiating dialogue.
 <br>
 
-### Behavior Flags (BlueprintReadOnly) 
+### Gameplay Tags (BlueprintReadOnly) 
 * **Type:** FGameplayTagContainer
 * **Access:** Protected
-* **Description:** Flags associated with the current speech in dialogue. Used for animation, etc. 
+* **Description:** Tags associated with the current speech in dialogue. Used for animation, etc. 
 Updated for every new speech. Makes use of Unreal's GameplayTag system. 
 * **Note:** The built in GameplayTag system is excellent and very flexible. Unfortunately, it's not as widely publicized as it deserves, so it's possible that some users will not know about it. In general I tried to keep to systems that the average Unreal user will know, but in this case I decided that GameplayTags offer enough extra flexibility to be worth the risk that some users might not immediately understand what they're looking at. If you're not already familiar with these they're well worth the short time it takes to learn them. 
 <br>
 
-### On Behavior Flags Changed (BlueprintAssignable) 
-* **Type:** FOnBehaviorFlagsChanged
+### On Gameplay Tags Changed (BlueprintAssignable) 
+* **Type:** FOnGameplayTagsChanged
 * **Access:** Public
-* **Description:** Delegate used to let others know when behavior flags change. Takes an event/function whose parameter is an FGameplayTagContainer representing the new "behavior flags" for the speaker's current speech.
+* **Description:** Delegate used to let others know when gameplay Tags change. Takes an event/function whose parameter is an FGameplayTagContainer representing the new tags for the speaker's current speech.
 <br>
 
 ### On Speech Skipped (BlueprintAssignable) 

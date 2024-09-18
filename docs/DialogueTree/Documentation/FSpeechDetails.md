@@ -13,7 +13,7 @@ Struct used to pass information about an individual dialogue speech.
    * [**Speech Text**](FSpeechDetails.md#speech-text-blueprintreadonly)
    * [**Speaker Name**](FSpeechDetails.md#speaker-name-blueprintreadonly)
    * [**Speech Audio**](FSpeechDetails.md#speech-audio-blueprintreadonly)
-   * [**Behavior Flags**](FSpeechDetails.md#behavior-flags-blueprintreadonly)
+   * [**Gameplay Tags**](FSpeechDetails.md#gameplay-tags-blueprintreadonly)
    * [**bIgnoreContent**](FSpeechDetails.md#bignorecontent-blueprintreadonly)
    * [**bCanSkip**](FSpeechDetails.md#bcanskip-blueprintreadonly)
    * [**bIsLocked**](FSpeechDetails.md#bislocked-blueprintreadonly)
@@ -41,10 +41,10 @@ The following are the data attributes associated with the struct.
 * **Description:** The audio associated with the speech.
 <br>
 
-### Behavior Flags (BlueprintReadOnly)
+### Gameplay Tags (BlueprintReadOnly)
 * **Type:** FGameplayTagContainer
 * **Access:** Public
-* **Description:** Any gameplay tags serving as behavior flags associated with the speech. These are effectively tags that can be used to trigger animations, etc.
+* **Description:** Any gameplay tags associated with the speech. These can be used to trigger animations, etc.
 * **Note:** GameplayTagContainers and their GameplayTags might not be familiar to all users, but they are very quick to learn, very flexible and useful in a broad range of situations. 
 <br>
 
