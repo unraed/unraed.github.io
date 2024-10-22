@@ -23,6 +23,12 @@ Struct used to pass information about an individual dialogue speech.
 The following are the data attributes associated with the struct. 
 <br>
 
+### Speech Title (BlueprintReadOnly)
+* **Type:** FName
+* **Access:** Public
+* **Description:** The base title of the speech.
+<br>
+
 ### Speech Text (BlueprintReadOnly)
 * **Type:** FText
 * **Access:** Public

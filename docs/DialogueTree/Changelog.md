@@ -103,3 +103,10 @@ and default widgets. To do this, change the value of "Dialogue Option Widget Typ
 - Replaced some "hard" pointers with their soft equivalents to better account for conflicts with other plugins. Changing loading phase to "Post-Default" introduced its own crashes, so I have opted to leave it at "Pre-Default" for now and rely on the soft pointers. 
 - Fixed a bug that caused a crash when compiling a dialogue that contained a node with connections back to a parent node. 
 - Fixed crash that could occur when attempting to play an empty dialogue.
+
+## 10/21/2024 - v1.2.1
+Hotfix of issues with the previous version. Changes include:
+- Fixed an issue on later engine versions where dialogue graphs were "wiping" themselves when the editor restarted.
+- As a result of the above change, the speech details struct now includes the speech's title as set in the details panel.
+- Fixed a crash that sometimes occurred when selecting a node visited query in a dialogue condition. Please note that the fix sometimes results in the query's display text in the details panel falling behind its selected parameters. Clicking away and back will bring it up to speed. 
+- Fixed an occasional crash that occurred due to changes in how the dialogue graph was being loaded in in 1.2.0. 
